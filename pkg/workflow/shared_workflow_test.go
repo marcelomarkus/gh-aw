@@ -24,8 +24,6 @@ description: "Shared configuration without on field"
 tools:
   playwright:
     version: "v1.41.0"
-    allowed_domains:
-      - "example.com"
 network:
   allowed:
     - playwright

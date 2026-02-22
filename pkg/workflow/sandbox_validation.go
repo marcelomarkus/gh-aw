@@ -143,7 +143,7 @@ func validateSandboxConfig(workflowData *WorkflowData) error {
 				"sandbox",
 				"enabled without MCP servers",
 				"agent sandbox requires MCP servers to be configured",
-				"Add MCP tools to your workflow:\n\ntools:\n  github:\n    mode: remote\n  playwright:\n    allowed_domains: [\"example.com\"]\n\nOr disable the agent sandbox:\nsandbox:\n  agent: false",
+				"Add MCP tools to your workflow:\n\ntools:\n  github:\n    mode: remote\n  playwright: null\n\nOr disable the agent sandbox:\nsandbox:\n  agent: false",
 			)
 		}
 		if hasExplicitSandboxConfig {

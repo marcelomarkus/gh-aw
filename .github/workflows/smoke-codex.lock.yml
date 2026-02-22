@@ -28,7 +28,7 @@
 #     - shared/gh.md
 #     - shared/reporting.md
 #
-# gh-aw-metadata: {"schema_version":"v1","frontmatter_hash":"293f48aa360ae9abdc689bd2311d25b615842594cee0998c3e9a0873a944dcdd"}
+# gh-aw-metadata: {"schema_version":"v1","frontmatter_hash":"7d48bac6df7757e4815d5c43bf8bc9072daed18816f793b91d734c6b752705f2"}
 
 name: "Smoke Codex"
 "on":
@@ -1121,11 +1121,7 @@ jobs:
           ]
           entrypointArgs = [
             "--output-dir",
-            "/tmp/gh-aw/mcp-logs/playwright",
-            "--allowed-hosts",
-            "localhost;localhost:*;127.0.0.1;127.0.0.1:*",
-            "--allowed-origins",
-            "localhost;localhost:*;127.0.0.1;127.0.0.1:*"
+            "/tmp/gh-aw/mcp-logs/playwright"
           ]
           mounts = ["/tmp/gh-aw/mcp-logs:/tmp/gh-aw/mcp-logs:rw"]
           
@@ -1183,11 +1179,7 @@ jobs:
                 ],
                 "entrypointArgs": [
                   "--output-dir",
-                  "/tmp/gh-aw/mcp-logs/playwright",
-                  "--allowed-hosts",
-                  "localhost,localhost:*,127.0.0.1,127.0.0.1:*,github.com",
-                  "--allowed-origins",
-                  "localhost;localhost:*;127.0.0.1;127.0.0.1:*;github.com"
+                  "/tmp/gh-aw/mcp-logs/playwright"
                 ],
                 "mounts": ["/tmp/gh-aw/mcp-logs:/tmp/gh-aw/mcp-logs:rw"]
               },

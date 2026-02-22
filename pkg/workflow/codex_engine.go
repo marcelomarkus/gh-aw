@@ -397,9 +397,8 @@ func (e *CodexEngine) expandNeutralToolsToCodexTools(toolsConfig *ToolsConfig) *
 	if toolsConfig.Playwright != nil {
 		// Create an updated Playwright config with the allowed tools
 		playwrightConfig := &PlaywrightToolConfig{
-			Version:        toolsConfig.Playwright.Version,
-			AllowedDomains: toolsConfig.Playwright.AllowedDomains,
-			Args:           toolsConfig.Playwright.Args,
+			Version: toolsConfig.Playwright.Version,
+			Args:    toolsConfig.Playwright.Args,
 		}
 
 		result.Playwright = playwrightConfig
@@ -410,9 +409,6 @@ func (e *CodexEngine) expandNeutralToolsToCodexTools(toolsConfig *ToolsConfig) *
 		}
 		if playwrightConfig.Version != "" {
 			playwrightMCP["version"] = playwrightConfig.Version
-		}
-		if len(playwrightConfig.AllowedDomains) > 0 {
-			playwrightMCP["allowed_domains"] = playwrightConfig.AllowedDomains
 		}
 		if len(playwrightConfig.Args) > 0 {
 			playwrightMCP["args"] = playwrightConfig.Args

@@ -35,7 +35,7 @@
 #
 # inlined-imports: true
 #
-# gh-aw-metadata: {"schema_version":"v1","frontmatter_hash":"0760cd559b98c6f8276c3493ecc0951fe720e85d5ff255f36b0a0937eab2e13a"}
+# gh-aw-metadata: {"schema_version":"v1","frontmatter_hash":"ede2fec60fd2b3a5ef0b98f74ae9793996ccd5ad3755f6bf6c3aac7df7779e57"}
 
 name: "Smoke Claude"
 "on":
@@ -2176,11 +2176,7 @@ jobs:
                 ],
                 "entrypointArgs": [
                   "--output-dir",
-                  "/tmp/gh-aw/mcp-logs/playwright",
-                  "--allowed-hosts",
-                  "localhost,localhost:*,127.0.0.1,127.0.0.1:*,github.com",
-                  "--allowed-origins",
-                  "localhost;localhost:*;127.0.0.1;127.0.0.1:*;github.com"
+                  "/tmp/gh-aw/mcp-logs/playwright"
                 ],
                 "mounts": ["/tmp/gh-aw/mcp-logs:/tmp/gh-aw/mcp-logs:rw"]
               },

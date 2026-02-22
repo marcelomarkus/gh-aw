@@ -215,7 +215,6 @@ func (r *MCPConfigRendererUnified) RenderPlaywrightMCP(yaml *strings.Builder, pl
 // Per MCP Gateway Specification v1.0.0 section 3.2.1, stdio-based MCP servers MUST be containerized.
 // Uses MCP Gateway spec format: container, entrypointArgs, mounts, and args fields.
 func (r *MCPConfigRendererUnified) renderPlaywrightTOML(yaml *strings.Builder, playwrightConfig *PlaywrightToolConfig) {
-	args := generatePlaywrightDockerArgs(playwrightConfig)
 	customArgs := getPlaywrightCustomArgs(playwrightConfig)
 
 	// Use official Playwright MCP Docker image (no version tag - only one image)
@@ -242,14 +241,6 @@ func (r *MCPConfigRendererUnified) renderPlaywrightTOML(yaml *strings.Builder, p
 	yaml.WriteString("          entrypointArgs = [\n")
 	yaml.WriteString("            \"--output-dir\",\n")
 	yaml.WriteString("            \"/tmp/gh-aw/mcp-logs/playwright\"")
-	if len(args.AllowedDomains) > 0 {
-		domainsStr := strings.Join(args.AllowedDomains, ";")
-		yaml.WriteString(",\n")
-		yaml.WriteString("            \"--allowed-hosts\",\n")
-		yaml.WriteString("            \"" + domainsStr + "\",\n")
-		yaml.WriteString("            \"--allowed-origins\",\n")
-		yaml.WriteString("            \"" + domainsStr + "\"")
-	}
 
 	// Append custom args if present
 	writeArgsToYAML(yaml, customArgs, "            ")

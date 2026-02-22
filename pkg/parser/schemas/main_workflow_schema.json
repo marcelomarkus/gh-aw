@@ -3109,32 +3109,16 @@
           "oneOf": [
             {
               "type": "null",
-              "description": "Enable Playwright tool with default settings (localhost access only for security)"
+              "description": "Enable Playwright tool with default settings"
             },
             {
               "type": "object",
-              "description": "Playwright tool configuration with custom version and domain restrictions",
+              "description": "Playwright tool configuration with custom version and arguments",
               "properties": {
                 "version": {
                   "type": ["string", "number"],
                   "description": "Optional Playwright container version (e.g., 'v1.41.0', 1.41, 20). Numeric values are automatically converted to strings at runtime.",
                   "examples": ["v1.41.0", 1.41, 20]
-                },
-                "allowed_domains": {
-                  "description": "Domains allowed for Playwright browser network access. Defaults to localhost only for security.",
-                  "oneOf": [
-                    {
-                      "type": "array",
-                      "description": "List of allowed domains or patterns (e.g., ['github.com', '*.example.com'])",
-                      "items": {
-                        "type": "string"
-                      }
-                    },
-                    {
-                      "type": "string",
-                      "description": "Single allowed domain (e.g., 'github.com')"
-                    }
-                  ]
                 },
                 "args": {
                   "type": "array",

@@ -20,7 +20,7 @@
 //   - Safe Outputs: GH_AW_SAFE_OUTPUTS_*, GH_AW_ASSETS_*
 //   - Safe Inputs: GH_AW_SAFE_INPUTS_PORT, GH_AW_SAFE_INPUTS_API_KEY
 //   - Serena: GH_AW_SERENA_PORT (local mode only)
-//   - Playwright: Domain secrets from allowed_domains expressions
+//   - Playwright: Secrets from custom args expressions
 //   - HTTP MCP: Custom secrets from headers and env sections
 //
 // Token precedence for GitHub MCP:
@@ -153,13 +153,12 @@ func collectMCPEnvironmentVariables(tools map[string]any, mcpTools []string, wor
 		}
 	}
 	if hasPlaywright {
-		// Extract all expressions from playwright arguments using ExpressionExtractor
+		// Extract all expressions from playwright custom args using ExpressionExtractor
 		if playwrightTool, ok := tools["playwright"]; ok {
 			playwrightConfig := parsePlaywrightTool(playwrightTool)
-			allowedDomains := generatePlaywrightAllowedDomains(playwrightConfig)
 			customArgs := getPlaywrightCustomArgs(playwrightConfig)
-			playwrightAllowedDomainsSecrets := extractExpressionsFromPlaywrightArgs(allowedDomains, customArgs)
-			for envVarName, originalExpr := range playwrightAllowedDomainsSecrets {
+			playwrightArgSecrets := extractExpressionsFromPlaywrightArgs(customArgs)
+			for envVarName, originalExpr := range playwrightArgSecrets {
 				envVars[envVarName] = originalExpr
 			}
 		}

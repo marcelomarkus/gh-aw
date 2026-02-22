@@ -271,26 +271,10 @@ type GitHubToolConfig struct {
 	App         *GitHubAppConfig   `yaml:"app,omitempty"` // GitHub App configuration for token minting
 }
 
-// PlaywrightDomain represents a domain name allowed for Playwright browser automation
-type PlaywrightDomain string
-
-// PlaywrightAllowedDomains is a slice of allowed domain names for Playwright
-type PlaywrightAllowedDomains []PlaywrightDomain
-
-// ToStringSlice converts PlaywrightAllowedDomains to []string
-func (p PlaywrightAllowedDomains) ToStringSlice() []string {
-	result := make([]string, len(p))
-	for i, domain := range p {
-		result[i] = string(domain)
-	}
-	return result
-}
-
 // PlaywrightToolConfig represents the configuration for the Playwright tool
 type PlaywrightToolConfig struct {
-	Version        string                   `yaml:"version,omitempty"`
-	AllowedDomains PlaywrightAllowedDomains `yaml:"allowed_domains,omitempty"`
-	Args           []string                 `yaml:"args,omitempty"`
+	Version string   `yaml:"version,omitempty"`
+	Args    []string `yaml:"args,omitempty"`
 }
 
 // SerenaToolConfig represents the configuration for the Serena MCP tool

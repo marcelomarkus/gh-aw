@@ -27,8 +27,6 @@ tools:
   cache-memory: true
   github:
   playwright:
-    allowed_domains:
-      - github.com
   edit:
   bash:
     - "*"

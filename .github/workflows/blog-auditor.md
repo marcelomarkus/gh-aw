@@ -17,9 +17,6 @@ network:
     - www.githubnext.com
 tools:
   playwright:
-    allowed_domains:
-      - githubnext.com
-      - www.githubnext.com
   bash:
     - "date *"
     - "echo *"

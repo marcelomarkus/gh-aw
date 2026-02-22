@@ -22,10 +22,6 @@ network:
 
 tools:
   playwright:
-    allowed_domains:
-      - ashleywolf.github.io
-      - mossaka.github.io
-      - github.github.com
   web-fetch:
   bash:
     - "curl*"

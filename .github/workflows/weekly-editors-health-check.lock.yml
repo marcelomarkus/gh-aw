@@ -23,7 +23,7 @@
 #
 # Checks that the workflow editors listed in the documentation are still valid, takes Playwright screenshots, and opens a PR to update the docs with preview images
 #
-# gh-aw-metadata: {"schema_version":"v1","frontmatter_hash":"cad98865f3289e7779bfc0a4c4aeff5021753065adda88d5836ac17f88512a49"}
+# gh-aw-metadata: {"schema_version":"v1","frontmatter_hash":"14d8bdeb32a4dc257f4ddd7b84ee9f5339b6369fc2521f4b8640cc1fa9ca22a7"}
 
 name: "Weekly Editors Health Check"
 "on":
@@ -718,7 +718,7 @@ jobs:
                 "type": "stdio",
                 "container": "mcr.microsoft.com/playwright/mcp",
                 "args": ["--init", "--network", "host", "--security-opt", "seccomp=unconfined", "--ipc=host"],
-                "entrypointArgs": ["--output-dir", "/tmp/gh-aw/mcp-logs/playwright", "--allowed-hosts", "localhost,localhost:*,127.0.0.1,127.0.0.1:*,ashleywolf.github.io,github.github.com,mossaka.github.io", "--allowed-origins", "localhost;localhost:*;127.0.0.1;127.0.0.1:*;ashleywolf.github.io;github.github.com;mossaka.github.io"],
+                "entrypointArgs": ["--output-dir", "/tmp/gh-aw/mcp-logs/playwright"],
                 "mounts": ["/tmp/gh-aw/mcp-logs:/tmp/gh-aw/mcp-logs:rw"]
               },
               "safeoutputs": {

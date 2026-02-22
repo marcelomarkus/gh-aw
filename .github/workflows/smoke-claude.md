@@ -43,8 +43,6 @@ tools:
   github:
     toolsets: [repos, pull_requests]
   playwright:
-    allowed_domains:
-      - github.com
   edit:
   bash:
     - "*"

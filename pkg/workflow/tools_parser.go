@@ -299,25 +299,6 @@ func parsePlaywrightTool(val any) *PlaywrightToolConfig {
 			config.Version = fmt.Sprintf("%g", versionNum)
 		}
 
-		// Handle allowed_domains - can be string or array
-		if allowedDomains, ok := configMap["allowed_domains"]; ok {
-			if str, ok := allowedDomains.(string); ok {
-				config.AllowedDomains = PlaywrightAllowedDomains{PlaywrightDomain(str)}
-			} else if arr, ok := allowedDomains.([]any); ok {
-				config.AllowedDomains = make(PlaywrightAllowedDomains, 0, len(arr))
-				for _, item := range arr {
-					if str, ok := item.(string); ok {
-						config.AllowedDomains = append(config.AllowedDomains, PlaywrightDomain(str))
-					}
-				}
-			} else if arr, ok := allowedDomains.([]string); ok {
-				config.AllowedDomains = make(PlaywrightAllowedDomains, 0, len(arr))
-				for _, str := range arr {
-					config.AllowedDomains = append(config.AllowedDomains, PlaywrightDomain(str))
-				}
-			}
-		}
-
 		// Handle args field - can be []any or []string
 		if argsValue, ok := configMap["args"]; ok {
 			if arr, ok := argsValue.([]any); ok {

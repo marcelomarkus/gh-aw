@@ -40,5 +40,6 @@ func GetAllCodemods() []Codemod {
 		getBotsToOnBotsCodemod(),              // Move top-level bots to on.bots
 		getEngineStepsToTopLevelCodemod(),     // Move engine.steps to top-level steps
 		getAssignToAgentDefaultAgentCodemod(), // Rename deprecated default-agent to name in assign-to-agent
+		getPlaywrightDomainsCodemod(),         // Migrate tools.playwright.allowed_domains to network.allowed
 	}
 }
