@@ -26,21 +26,7 @@ To use Copilot CLI with GitHub Agentic Workflows:
    engine: copilot
    ```
 
-2. Create a fine-grained GitHub Personal Access Token (PAT)
-
-   You need a GitHub Personal Access Token (PAT) with the `copilot-requests` scope to authenticate Copilot CLI. Create a fine-grained PAT at <https://github.com/settings/personal-access-tokens/new>.
-
-   - Select your user account, not an organization.
-   - Choose "Public repositories" access.
-   - Enable "Copilot Requests" permissions.
-
-   You **must** have "Public repositories" selected; otherwise, the Copilot Requests permission option will not appear.
-
-3. Add the PAT to your GitHub Actions repository secrets as `COPILOT_GITHUB_TOKEN`:
-
-   ```bash wrap
-   gh aw secrets set COPILOT_GITHUB_TOKEN --value "<your-github-pat>"
-   ```
+2. Configure the `COPILOT_GITHUB_TOKEN` secret. See [Authentication: COPILOT_GITHUB_TOKEN](/gh-aw/reference/auth/#copilot_github_token) for setup instructions.
 
 ## Using Claude by Anthropic (Claude Code)
 
@@ -52,13 +38,7 @@ To use [Claude by Anthropic](https://www.anthropic.com/index/claude) (aka Claude
    engine: claude
    ```
 
-2. Configure `ANTHROPIC_API_KEY` GitHub Actions secret.
-
-   [Create an Anthropic API key](https://platform.claude.com/docs/en/get-started) and add it to your repository:
-
-   ```bash wrap
-   gh aw secrets set ANTHROPIC_API_KEY --value "<your-anthropic-api-key>"
-   ```
+2. Configure the `ANTHROPIC_API_KEY` secret. See [Authentication: ANTHROPIC_API_KEY](/gh-aw/reference/auth/#anthropic_api_key) for setup instructions.
 
 ## Using OpenAI Codex
 
@@ -70,13 +50,7 @@ To use [OpenAI Codex](https://openai.com/blog/openai-codex):
    engine: codex
    ```
 
-2. Configure `OPENAI_API_KEY` GitHub Actions secret.
-
-   [Create an OpenAI API key](https://platform.openai.com/api-keys) and add it to your repository:
-
-   ```bash wrap
-   gh aw secrets set OPENAI_API_KEY --value "<your-openai-api-key>"
-   ```
+2. Configure the `OPENAI_API_KEY` secret. See [Authentication: OPENAI_API_KEY](/gh-aw/reference/auth/#openai_api_key) for setup instructions.
 
 ## Using Google Gemini CLI
 
@@ -88,13 +62,7 @@ To use [Google Gemini CLI](https://github.com/google-gemini/gemini-cli):
    engine: gemini
    ```
 
-2. Configure `GEMINI_API_KEY` GitHub Actions secret.
-
-   [Create a Gemini API key](https://aistudio.google.com/apikey) and add it to your repository:
-
-   ```bash wrap
-   gh aw secrets set GEMINI_API_KEY --value "<your-gemini-api-key>"
-   ```
+2. Configure the `GEMINI_API_KEY` secret. See [Authentication: GEMINI_API_KEY](/gh-aw/reference/auth/#gemini_api_key) for setup instructions.
 
 ## Extended Coding Agent Configuration
 

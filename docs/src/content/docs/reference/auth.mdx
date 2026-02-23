@@ -22,6 +22,7 @@ You will need one of the following GitHub Actions secrets configured in your rep
 - **Copilot** – Add [`COPILOT_GITHUB_TOKEN`](#copilot_github_token)
 - **Claude by Anthropic** – Add [`ANTHROPIC_API_KEY`](#anthropic_api_key)
 - **Codex by OpenAI** – Add [`OPENAI_API_KEY`](#openai_api_key)
+- **Gemini by Google** – Add [`GEMINI_API_KEY`](#gemini_api_key)
 
 Depending on what your workflow needs to do, you may need additional GitHub tokens added as repository secrets:
 
@@ -69,17 +70,16 @@ A reference for all GitHub Actions secrets and tokens used by GitHub Agentic Wor
 
 ### `COPILOT_GITHUB_TOKEN`
 
-If using Copilot as your AI engine, you need a GitHub Actions Secret set to a GitHub Personal Access Token (PAT) with the `copilot-requests` scope to authenticate Copilot CLI.
-
-**Setup**:
+If using Copilot as your AI engine, you need a GitHub Actions Secret set to a GitHub Personal Access Token (PAT) to authenticate Copilot CLI.
 
 Create a [fine-grained PAT](https://github.com/settings/personal-access-tokens/new):
 
-1. Select your user account, not an organization.
-2. Choose **"Public repositories"** access, even if adding a workflow to a private repo.
-3. Enable "Copilot Requests" permissions.
+1. Select your **user account**, not an organization.
+2. Choose **"Public repositories"**, even if you will be using it with private repositories. This is required for the "Copilot Requests" permission to be available.
+3. Click "Add permissions" and choose "Copilot Requests".
+4. Click "Generate token" and copy the token value.
 
-You **must have "Public repositories" selected**; otherwise, the Copilot Requests permission option will not appear.
+You **must have "Public repositories" selected**; otherwise, the Copilot Requests permission option will not be available.
 
 Then add the PAT to your GitHub Actions repository secrets as `COPILOT_GITHUB_TOKEN`, either by CLI or GitHub UI (see video).
 
@@ -131,6 +131,24 @@ If using the Codex by OpenAI engine, you need to set a GitHub Actions secret `OP
    ```
 
 See also (/gh-aw/reference/engines/#using-openai-codex) for additional configuration needed when using Codex with GitHub MCP.
+
+---
+
+### `GEMINI_API_KEY`
+
+If using the Gemini by Google engine, you need to set a GitHub Actions secret `GEMINI_API_KEY` with an API key from Google AI Studio.
+
+**Setup**:
+
+1. Create an API key at https://aistudio.google.com/api-keys
+
+2. Add it to your repository secrets:
+
+   ```bash wrap
+   gh aw secrets set GEMINI_API_KEY --value "YOUR_GEMINI_API_KEY"
+   ```
+
+See also (/gh-aw/reference/engines/#using-google-gemini-cli) for additional configuration needed when using Gemini with GitHub MCP.
 
 ---
 
