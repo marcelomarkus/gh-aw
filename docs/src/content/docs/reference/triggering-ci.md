@@ -23,31 +23,29 @@ To trigger CI checks on PRs created by agentic workflows, configure a CI trigger
 
 3. Reference it in your workflow:
 
-```yaml wrap
-safe-outputs:
-  create-pull-request:
-    github-token-for-extra-empty-commit: ${{ secrets.GH_AW_CI_TRIGGER_TOKEN }}
-```
+   ```yaml wrap
+   safe-outputs:
+     create-pull-request:
+       github-token-for-extra-empty-commit: ${{ secrets.GH_AW_CI_TRIGGER_TOKEN }}
+   ```
 
-or
+   or
 
-```yaml wrap
-safe-outputs:
-  push-to-pull-request-branch:
-    github-token-for-extra-empty-commit: ${{ secrets.GH_AW_CI_TRIGGER_TOKEN }}
-```
+   ```yaml wrap
+   safe-outputs:
+     push-to-pull-request-branch:
+       github-token-for-extra-empty-commit: ${{ secrets.GH_AW_CI_TRIGGER_TOKEN }}
+   ```
 
 When configured, the token will be used to push an extra empty commit to the PR branch after PR creation. This will trigger `push` and `pull_request` events normally.
 
-You can also use `app` to authenticate via a GitHub App:
+You can also use `app` to authenticate via [the GitHub App configured for the workflow](/gh-aw/reference/auth/).
 
 ```yaml wrap
 safe-outputs:
   create-pull-request:
     github-token-for-extra-empty-commit: app
 ```
-
-This uses the GitHub App configured for the workflow. See the [Authentication reference](/gh-aw/reference/auth/) for GitHub App setup.
 
 ## Alternative: Full Token Override
 
