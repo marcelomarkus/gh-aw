@@ -330,34 +330,20 @@ func (c *Compiler) buildEngineSteps(data *WorkflowData) []string {
 	// 3. Default detection model from the engine (as environment variable fallback)
 	detectionEngineConfig := engineConfig
 
-	// Only copy the engine config if a model is explicitly configured
-	// If no model is configured, we'll let the environment variable mechanism handle it
-	modelExplicitlyConfigured := engineConfig != nil && engineConfig.Model != ""
-
-	if modelExplicitlyConfigured {
-		// Model is explicitly configured, use it as-is
-		detectionEngineConfig = engineConfig
+	// Build a detection engine config inheriting ID, Model, Version, Env, Config, Args.
+	// MaxTurns, Concurrency, UserAgent, Firewall, and Agent are intentionally omitted —
+	// the detection job is a simple threat-analysis invocation and must never run as a
+	// custom agent (no repo checkout, agent file unavailable).
+	if detectionEngineConfig == nil {
+		detectionEngineConfig = &EngineConfig{ID: engineSetting}
 	} else {
-		// No model configured - create/update config but don't set model
-		// This allows the engine execution to use environment variables
-		if detectionEngineConfig == nil {
-			detectionEngineConfig = &EngineConfig{
-				ID: engineSetting,
-			}
-		} else {
-			// Create a copy without setting the model
-			detectionEngineConfig = &EngineConfig{
-				ID:          detectionEngineConfig.ID,
-				Model:       "", // Explicitly leave empty for env var mechanism
-				Version:     detectionEngineConfig.Version,
-				MaxTurns:    detectionEngineConfig.MaxTurns,
-				Concurrency: detectionEngineConfig.Concurrency,
-				UserAgent:   detectionEngineConfig.UserAgent,
-				Env:         detectionEngineConfig.Env,
-				Config:      detectionEngineConfig.Config,
-				Args:        detectionEngineConfig.Args,
-				Firewall:    detectionEngineConfig.Firewall,
-			}
+		detectionEngineConfig = &EngineConfig{
+			ID:      detectionEngineConfig.ID,
+			Model:   detectionEngineConfig.Model,
+			Version: detectionEngineConfig.Version,
+			Env:     detectionEngineConfig.Env,
+			Config:  detectionEngineConfig.Config,
+			Args:    detectionEngineConfig.Args,
 		}
 	}
 
