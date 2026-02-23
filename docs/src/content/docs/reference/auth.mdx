@@ -215,7 +215,7 @@ gh aw secrets set GH_AW_GITHUB_MCP_SERVER_TOKEN --value "YOUR_MCP_PAT"
 
 ### `GH_AW_CI_TRIGGER_TOKEN`
 
-Pull requests and pushes made with `GITHUB_TOKEN` do not trigger `pull_request`, `push`, or `pull_request_target` events. This is a GitHub Actions feature to prevent recursive workflows.
+Pull requests and pushes made with `GITHUB_TOKEN` do not trigger `pull_request`, `push`, or `pull_request_target` events. This is a GitHub Actions feature to prevent event cascades.
 
 See [Triggering CI](/gh-aw/reference/triggering-ci/) for how to configure CI triggers on PRs created by workflows using `
 
